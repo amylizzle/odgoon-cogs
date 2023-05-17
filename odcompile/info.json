@@ -1,0 +1,10 @@
+{
+  "author": ["Crossedfall"],
+  "install_msg": "A compiler server is required for this cog to function. Check the repo for more details.",
+  "name": "OpenDream Discord compiler.",
+  "short": "A discord compiler for OpenDream",
+  "requirements": ["httpx"],
+  "description": "A discord frontend for the opendream compiler listener service",
+  "permissions": ["List of Bot permissions required"],
+  "tags": ["development", "opendream", "dm"]
+}

@@ -1,0 +1,8 @@
+{
+  "author": ["Crossedfall (Crossedfall#1001)"],
+  "install_msg": "Open cogs for OpenDream",
+  "name": "OpenDream Cogs.",
+  "short": "A set of companion cogs for the OpenDream project.",
+  "description": "A set of companion cogs for the OpenDream project.",
+  "tags": ["development","opendream","dm"]
+}
