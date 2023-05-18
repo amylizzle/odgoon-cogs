@@ -56,13 +56,13 @@ def getEmbed(logs: json, full: bool = False) -> Embed:
 
     if int(COMPILER_WARNING_PATTERN.search(compile_log).group(1)) > 0:
         embed = Embed(
-            title="Warnings found during compilation",
+            title="Warnings found during compilation!",
             description=f"Compiler Output:\n{compiler_output}\nExecution Output:\n{execution_output}",
             color=0xFFCC00,
         )
     elif SERVER_ERROR_PATTERN.search(run_log) is not None:
         embed = Embed(
-            title="Errors found during execution",
+            title="Errors found during execution!",
             description=f"Compiler Output:\n{compiler_output}\nExecution Output:\n{execution_output}",
             color=0xFF0000,
         )
