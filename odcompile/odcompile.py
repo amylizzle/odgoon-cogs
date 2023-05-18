@@ -1,8 +1,16 @@
+import re
+
+from redbot.core import checks
 from redbot.core import commands
-from redbot.core import Config
+from redbot.core.config import Config
+
+from odcompile.utils.misc import cleanup_code
+from odcompile.utils.relay import processCode
 
 __version__ = "1.1.0"
 __author__ = "Crossedfall"
+
+INCLUDE_PATTERN = re.compile(r"#(|\W+)include")
 
 
 class ODCompile(commands.Cog):
@@ -16,7 +24,66 @@ class ODCompile(commands.Cog):
 
         self.config.register_global(**default_config)
 
+    @commands.group()
+    @checks.admin_or_permissions(administrator=True)
+    async def odcompileset(self, ctx):
+        """
+        DM Compiler settings
+        """
+        pass
+
+    @odcompileset.command()
+    async def listener(self, ctx, url: str = None):
+        """
+        Set the full URL for the listener
+
+        Should be similar to: http://localhost:5000/compile
+        """
+
+        try:
+            await self.config.listener_url.set(url)
+            await ctx.send(f"Listener URL set to: {url}")
+        except (ValueError, KeyError, AttributeError):
+            await ctx.send("There was an error setting the listener's URL. Please check your entry and try again.")
+
     @commands.command()
-    async def meep(self, ctx):
-        """placeholder"""
-        await ctx.send("Meep!")
+    async def odcompile(self, ctx, full_output: str = "False", *, code: str):
+        """
+        Compile and run DM code
+
+        This command will attempt to compile and execute given DM code. It will respond with the full compile log along with any outputs given during runtime. If there are any errors during compilation, the bot will respond with a list provided by OpenDream.
+
+        The code must be contained within a codeblock, for example:
+        ```
+        world.log << 'Hello world!'
+        ```
+        If you're using multiple functions, or if your code requires indentation, you must define a `proc/main()` as shown below.
+        ```
+        proc/example()
+            world.log << "I'm an example function!"
+
+        proc/main()
+            example()
+        ```
+        Adding `True` before the codeblock will provide the full execution output instead of a parsed version.
+
+        __Code will always be compiled with the latest version of OpenDream__
+        """
+        if full_output.startswith("```"):
+            full_output = False
+            code = f"```\n{code}"
+        elif full_output.startswith("True"):
+            full_output = True
+
+        code = cleanup_code(code)
+        if code is None:
+            return await ctx.send("Your code has to be in a code block!")
+        if INCLUDE_PATTERN.search(code) is not None:
+            return await ctx.send("You can't have any `#include` statements in your code.")
+
+        message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
+
+        async with ctx.typing():
+            embed = await processCode(self=self, code=code, full_output=full_output)
+            await ctx.send(embed=embed)
+            return await message.delete()
