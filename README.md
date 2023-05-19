@@ -55,17 +55,17 @@ _Code will always be compiled with the latest version of OpenDream_
 	<summary>Example screenshots</summary>
 
 - **Quick compile**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/4191b2dc-dc4b-41d4-908d-b8a558b811fa)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/5b558831-4e12-42dd-89da-fa014a0dfa1a)
 - **Compiling with multiple procs**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/4d20e22c-bd5a-42f8-90ea-b53d386531fa)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/4e6bbda6-db84-4978-b0b0-2fc983a1af31)
 - **Compiler warnings**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/ee8ba2ec-cbf5-46cd-ab00-e4be14242412)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/28a7ea06-4740-4813-a125-8bb422b8a594)
 - **Compiler errors**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/6cf0fde0-5547-4ddc-b7d9-76fdb5ccabf6)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/00179f34-4a08-42d1-93dc-8c6c592b30d1)
 - **Passing arguments to the compiler**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/4c5d510f-f03a-4dc6-a785-487da62841ca)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/378dd849-afa7-4024-8983-b9f44e8c6881)
 - **Passing multiple arguments at once and disabling the parsed output**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/3e0ac942-2be3-49a0-9714-61700754a7d3)
+	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/d13c003c-86e6-4bac-951d-00d42a4ac746)
 </details>
 
 ### Contact:
