@@ -23,7 +23,7 @@ class ODCompile(commands.Cog):
         self.config.register_global(**default_config)
 
     @commands.group()
-    @checks.admin_or_permissions(administrator=True)
+    @checks.is_owner()
     async def odcompileset(self, ctx):
         """
         DM Compiler settings
