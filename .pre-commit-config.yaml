@@ -26,3 +26,10 @@ repos:
       rev: b5d69d1
       hooks:
           - id: reorder-python-imports
+
+    - repo: https://github.com/codespell-project/codespell
+      rev: ec0f41b
+      hooks:
+      - id: codespell
+        additional_dependencies:
+        - tomli

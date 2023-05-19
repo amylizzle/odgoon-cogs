@@ -1,16 +1,15 @@
 import json
-import re
 
 from discord import Embed
 from redbot.core.utils.chat_formatting import box
 from redbot.core.utils.chat_formatting import escape
 
-CODE_BLOCK_RE = re.compile(r"^((`+\S+\\n)|(`{1,3}))(?=\S)|(`{1,3}$)")
-COMPILER_ERROR_RE = re.compile(r"(Compilation failed with (\d*) errors)|([Unknown|Invalid] arg 'DMCompiler\.Argument')")
-COMPILER_WARNING_RE = re.compile(r"Compilation succeeded with (\d*) warnings")
-SERVER_ERROR_RE = re.compile(r"(\[FAIL\]|\[ERRO\])")
-SERVER_STARTING_OUTPUT_RE = re.compile(r"((.|\n)*)\[INFO\] world.log: -------ODC-Start-------")
-SERVER_ENDING_OUTPUT_RE = re.compile(r"\[INFO\] world.log: --------ODC-End--------((.|\n)*)")
+from odcompile.utils.regex import CODE_BLOCK_RE
+from odcompile.utils.regex import COMPILER_ERROR_RE
+from odcompile.utils.regex import COMPILER_WARNING_RE
+from odcompile.utils.regex import SERVER_ENDING_OUTPUT_RE
+from odcompile.utils.regex import SERVER_ERROR_RE
+from odcompile.utils.regex import SERVER_STARTING_OUTPUT_RE
 
 
 def cleanup_code(content: str) -> str | None:

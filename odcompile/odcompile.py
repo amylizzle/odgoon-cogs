@@ -1,17 +1,14 @@
-import re
-
 from redbot.core import checks
 from redbot.core import commands
 from redbot.core.config import Config
 
 from odcompile.utils.misc import cleanup_code
 from odcompile.utils.misc import splitArgs
+from odcompile.utils.regex import INCLUDE_PATTERN
 from odcompile.utils.relay import processCode
 
 __version__ = "1.1.0"
 __author__ = "Crossedfall"
-
-INCLUDE_PATTERN = re.compile(r"#(|\W+)include")
 
 
 class ODCompile(commands.Cog):

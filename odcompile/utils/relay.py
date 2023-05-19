@@ -10,12 +10,12 @@ from httpx import ReadTimeout
 from odcompile.utils.misc import getEmbed
 
 
-async def sendCode(listenerurl: str, code: str, args: list, timout: int = 900) -> json:
+async def sendCode(listenerurl: str, code: str, args: list, timeout: int = 900) -> json:
     """
     Communicate with the sandbox server and return the json output
     """
     async with AsyncClient() as client:
-        r = await client.post(listenerurl, json={"code_to_compile": code, "extra_arguments": args}, timeout=timout)
+        r = await client.post(listenerurl, json={"code_to_compile": code, "extra_arguments": args}, timeout=timeout)
         return r.json()
 
 
