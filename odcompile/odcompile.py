@@ -54,18 +54,23 @@ class ODCompile(commands.Cog):
 
         This command will attempt to compile and execute given DM code. It will respond with the full compile log along with any outputs given during runtime. If there are any errors during compilation, the bot will respond with a list provided by OpenDream.
 
-        The code must be contained within a codeblock, for example:
+        Short one-liners can be provided in basic code-markdon, for example:
+        `world.log < "Hello, World!"`
+
+        Multi-line or explicit code must be contained within a codeblock, for example:
+        ```c
+        world.log << 'Hello,'
+        world.log << "World!"
         ```
-        world.log << 'Hello world!'
-        ```
-        If you're using multiple functions, or if your code requires indentation, you must define a `proc/main()` as shown below.
-        ```
-        proc/example()
+        If you're using multiple functions, or if your code requires indentation, you must define a `/proc/main()` as shown below.
+        ```c
+        /proc/example()
             world.log << "I'm an example function!"
 
-        proc/main()
+        /proc/main()
             example()
         ```
+        **Arguments**
         You can pass extra command line arguments to the compiler by adding them before the codeblock.
 
         Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
