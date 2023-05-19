@@ -5,6 +5,6 @@
   "short": "A discord compiler for OpenDream",
   "requirements": ["httpx"],
   "description": "A discord frontend for the opendream compiler listener service",
-  "permissions": ["List of Bot permissions required"],
+  "permissions" : ["Manage Messages", "Embed Links"],
   "tags": ["development", "opendream", "dm"]
 }

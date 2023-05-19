@@ -12,7 +12,7 @@ from odcompile.utils.regex import SERVER_ERROR_RE
 from odcompile.utils.regex import SERVER_STARTING_OUTPUT_RE
 
 
-def cleanup_code(content: str) -> str | None:
+def cleanupCode(content: str) -> str | None:
     """
     clears those pesky codeblocks
     """
@@ -99,8 +99,6 @@ def parseRunOutput(logs: str, parsed_output: bool) -> str:
     """
     Parse the run output to make it a lot more readable
     """
-    # Instead of checking if the value is False, we check to see if it's anything other than True.
-    # This allows us to handle a load of weird edge cases caused by the command's input method.
     if parsed_output is True:
         logs = SERVER_STARTING_OUTPUT_RE.sub("", logs)
         logs = SERVER_ENDING_OUTPUT_RE.sub("", logs)

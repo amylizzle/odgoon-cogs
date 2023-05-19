@@ -2,12 +2,12 @@ from redbot.core import checks
 from redbot.core import commands
 from redbot.core.config import Config
 
-from odcompile.utils.misc import cleanup_code
+from odcompile.utils.misc import cleanupCode
 from odcompile.utils.misc import splitArgs
 from odcompile.utils.regex import INCLUDE_PATTERN
 from odcompile.utils.relay import processCode
 
-__version__ = "1.1.0"
+__version__ = "0.1.0"
 __author__ = "Crossedfall"
 
 
@@ -76,7 +76,7 @@ class ODCompile(commands.Cog):
         """
         cleaned_input = splitArgs(args=input)
 
-        code = cleanup_code(cleaned_input["code"])
+        code = cleanupCode(cleaned_input["code"])
         if code is None:
             return await ctx.send("Your code has to be in a code block!")
         if INCLUDE_PATTERN.search(code) is not None:
