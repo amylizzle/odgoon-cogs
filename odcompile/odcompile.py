@@ -5,6 +5,7 @@ from redbot.core import commands
 from redbot.core.config import Config
 
 from odcompile.utils.misc import cleanup_code
+from odcompile.utils.misc import splitArgs
 from odcompile.utils.relay import processCode
 
 __version__ = "1.1.0"
@@ -47,7 +48,7 @@ class ODCompile(commands.Cog):
             await ctx.send("There was an error setting the listener's URL. Please check your entry and try again.")
 
     @commands.command()
-    async def odcompile(self, ctx, full_output: str = "False", *, code: str):
+    async def odcompile(self, ctx, *, input: str):
         """
         Compile and run DM code
 
@@ -65,17 +66,15 @@ class ODCompile(commands.Cog):
         proc/main()
             example()
         ```
-        Adding `True` before the codeblock will provide the full execution output instead of a parsed version.
+        You can pass extra command line arguments to the compiler by adding them before the codeblock.
+
+        Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
 
         __Code will always be compiled with the latest version of OpenDream__
         """
-        if full_output.startswith("```"):
-            full_output = False
-            code = f"```\n{code}"
-        elif full_output.startswith("True"):
-            full_output = True
+        cleaned_input = splitArgs(args=input)
 
-        code = cleanup_code(code)
+        code = cleanup_code(cleaned_input["code"])
         if code is None:
             return await ctx.send("Your code has to be in a code block!")
         if INCLUDE_PATTERN.search(code) is not None:
@@ -84,6 +83,8 @@ class ODCompile(commands.Cog):
         message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
 
         async with ctx.typing():
-            embed = await processCode(self=self, code=code, full_output=full_output)
+            embed = await processCode(
+                self=self, code=code, args=cleaned_input["args"], parsed_output=cleaned_input["parsed"]
+            )
             await ctx.send(embed=embed)
             return await message.delete()
