@@ -51,7 +51,7 @@ class ODCompile(commands.Cog):
 
         This command will attempt to compile and execute given DM code. It will respond with the full compile log along with any outputs given during runtime. If there are any errors during compilation, the bot will respond with a list provided by OpenDream.
 
-        Short one-liners can be provided in basic code-markdon, for example:
+        Short one-liners can be provided in basic code-markdown, for example:
         `world.log < "Hello, World!"`
 
         Multi-line or explicit code must be contained within a codeblock, for example:
