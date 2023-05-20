@@ -11,9 +11,9 @@ A collection of RedBot cogs for the OpenDream project
 
 ### RedBot:
 
-Setup for your RedBot V3 instance is a straightforward process.
+Setup for your RedBot V3 instance is a straightforward process. Ensure that your bot runs on python 3.11 and follow the below steps to add the repo and install the cog(s).
 
-1. Add this repo with `[p]repo add od-cogs <url>`
+1. Add this repo with `[p]repo add od-cogs https://github.com/OpenDreamProject/od-cogs`
 2. Install the cog(s) you want to use, `[p]cog install od-cogs odcompile`
 3. Load the newly installed cog(s) with `[p]load odcompile`
 
