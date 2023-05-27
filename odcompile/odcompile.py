@@ -68,7 +68,7 @@ class ODCompile(commands.Cog):
             example()
         ```
         **Arguments**
-        You can pass extra command line arguments to the compiler by adding them before the codeblock.
+        You can pass extra command line arguments to the compiler by adding them before the codeblock (e.g. `--version=123.456`).
 
         Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
 
