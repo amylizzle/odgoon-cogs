@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "od-cogs"
-version = "0.1.0"
+version = "0.2.0"
 description = "Cogs for OpenDream"
 authors = ["Crossedfall <ping@crossedfall.io>"]
 readme = "README.md"
