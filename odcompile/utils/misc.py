@@ -55,8 +55,12 @@ def getEmbed(logs: json, parsed_output: bool = True) -> Embed:
         embed = Embed(title="Unable to build image", description=f"{logs['exception']}", color=0xFF0000)
         return embed
 
-    compile_log = logs["compiler"]
-    run_log = parseRunOutput(logs["server"], parsed_output=parsed_output)
+    compile_log = (logs["compiler"][:1200] + "...") if len(logs["compiler"]) > 1200 else logs["compiler"]
+
+    # We need to send a larger sample to the parser to ensure that we properly match our ODC stanza
+    # Sending the full output could result in application hangs if the string is too large
+    run_log = parseRunOutput(logs["server"][:5000], parsed_output=parsed_output)
+    run_log = (run_log[:1200] + "...") if len(run_log) > 1200 else run_log
 
     compiler_output = box(escape(compile_log, mass_mentions=True, formatting=True))
     execution_output = box(escape(run_log, mass_mentions=True, formatting=True))
