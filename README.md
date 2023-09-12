@@ -44,7 +44,7 @@ If you're using multiple functions, or if your code requires indentation, you mu
 	example()
 ```
 #### Arguments
-							
+
 You can pass extra command line arguments to the compiler by adding them before the codeblock.
 
 Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.

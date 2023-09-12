@@ -73,7 +73,7 @@ class ODCompile(commands.Cog):
         Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
 
         __Code will always be compiled with the latest version of OpenDream__
-        """
+        """  # noqa: E501
         cleaned_input = splitArgs(args=input)
 
         code = cleanupCode(cleaned_input["code"])
