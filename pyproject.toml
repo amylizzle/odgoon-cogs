@@ -23,5 +23,5 @@ line-length = 120
 count = ""
 skip = ".git,.venv,*.lock,odcompile/utils/regex.py"
 builtin = "clear,rare,code,en-GB_to_en-US"
-ignore-words-list = "od,ro"
+ignore-words-list = "od"
 quiet = 3

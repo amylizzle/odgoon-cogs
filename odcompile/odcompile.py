@@ -79,7 +79,7 @@ class ODCompile(commands.Cog):
         If you'd like to compile using the Debug build of OpenDream use `[p]odcompiledebug`
 
         __Code will always be compiled with the latest version of OpenDream__
-        """
+        """  # noqa: E501
         cleaned_input = splitArgs(args=input)
 
         code = cleanupCode(cleaned_input["code"])

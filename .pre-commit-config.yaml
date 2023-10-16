@@ -1,35 +1,33 @@
 repos:
-    - repo: https://github.com/psf/black
-      rev: e87737140f32d3cd7c44ede75f02dcd58e55820e  # frozen: 23.9.1
-      hooks:
-          - id: black
+  - repo: https://github.com/psf/black
+    rev: e877371
+    hooks:
+      - id: black
 
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: c4a0b883114b00d8d76b479c820ce7950211c99b  # frozen: v4.5.0
-      hooks:
-          - id: trailing-whitespace
-          - id: end-of-file-fixer
-          - id: check-yaml
-          - id: check-added-large-files
-          - id: debug-statements
-            language_version: python3
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: f71fa2c
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: debug-statements
+        language_version: python3
 
-    - repo: https://github.com/PyCQA/flake8
-      rev: 7ef0350a439c93166bc8ba89fcc3de6a9a664e6c  # frozen: 6.1.0
-      hooks:
-          - id: flake8
-            args:
-                - "--ignore=E501"
-            language_version: python3
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7ef0350
+    hooks:
+      - id: flake8
+        language_version: python3
 
-    - repo: https://github.com/asottile/reorder-python-imports
-      rev: ae11ccbd838e90f7e2a16abbed9276e6a41cafbb  # frozen: v3.12.0
-      hooks:
-          - id: reorder-python-imports
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: ba4e0d3
+    hooks:
+      - id: reorder-python-imports
 
-    - repo: https://github.com/codespell-project/codespell
-      rev: 6e41aba91fb32e9feb741a6258eefeb9c6e4a482  # frozen: v2.2.6
-      hooks:
+  - repo: https://github.com/codespell-project/codespell
+    rev: 355e50e
+    hooks:
       - id: codespell
         additional_dependencies:
-        - tomli
+          - tomli
