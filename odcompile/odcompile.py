@@ -1,14 +1,15 @@
+from asyncio import get_event_loop
+
 from redbot.core import checks
 from redbot.core import commands
 from redbot.core.config import Config
 
+from odcompile.utils.logger import log
 from odcompile.utils.misc import cleanupCode
 from odcompile.utils.misc import splitArgs
+from odcompile.utils.misc import versionCheck
 from odcompile.utils.regex import INCLUDE_PATTERN
 from odcompile.utils.relay import processCode
-
-__version__ = "0.1.0"
-__author__ = "Crossedfall"
 
 
 class ODCompile(commands.Cog):
@@ -18,9 +19,11 @@ class ODCompile(commands.Cog):
         self.bot = bot
         self.config = Config.get_conf(self, 32175847454, force_registration=True)
 
-        default_config = {"listener_url": "http://localhost:5000/compile"}
+        default_config = {"listener_url": "http://localhost:5000", "config_version": None}
 
         self.config.register_global(**default_config)
+        self.loop = get_event_loop()
+        self.loop.create_task(versionCheck(self))
 
     @commands.group()
     @checks.is_owner()
@@ -33,12 +36,13 @@ class ODCompile(commands.Cog):
     @odcompileset.command()
     async def listener(self, ctx, url: str = None):
         """
-        Set the full URL for the listener
+        Set the base URL for the listener, DO NOT include `/compile`
 
-        Should be similar to: http://localhost:5000/compile
+        Should be similar to: http://localhost:5000
         """
 
         try:
+            url = url.rstrip("/")
             await self.config.listener_url.set(url)
             await ctx.send(f"Listener URL set to: {url}")
         except (ValueError, KeyError, AttributeError):
@@ -85,10 +89,15 @@ class ODCompile(commands.Cog):
             return await ctx.send("You can't have any `#include` statements in your code.")
 
         message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
+        log.debug(f"Sending code to the listener to be compiled:\n{code}")
 
         async with ctx.typing():
             embed = await processCode(
-                self=self, code=code, args=cleaned_input["args"], build_config="Release", parsed_output=cleaned_input["parsed"]
+                self=self,
+                code=code,
+                args=cleaned_input["args"],
+                build_config="Release",
+                parsed_output=cleaned_input["parsed"],
             )
             await ctx.send(embed=embed)
             return await message.delete()
@@ -107,10 +116,15 @@ class ODCompile(commands.Cog):
             return await ctx.send("You can't have any `#include` statements in your code.")
 
         message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
+        log.debug(f"Sending code to the listener to be compiled:\n{code}")
 
         async with ctx.typing():
             embed = await processCode(
-                self=self, code=code, args=cleaned_input["args"], build_config="Debug", parsed_output=cleaned_input["parsed"]
+                self=self,
+                code=code,
+                args=cleaned_input["args"],
+                build_config="Debug",
+                parsed_output=cleaned_input["parsed"],
             )
             await ctx.send(embed=embed)
             return await message.delete()

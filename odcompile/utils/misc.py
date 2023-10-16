@@ -1,9 +1,12 @@
 import json
 
 from discord import Embed
+from packaging.version import parse as parse_version
 from redbot.core.utils.chat_formatting import box
 from redbot.core.utils.chat_formatting import escape
 
+from odcompile._version import __version__
+from odcompile.utils.logger import log
 from odcompile.utils.regex import CODE_BLOCK_RE
 from odcompile.utils.regex import COMPILER_ERROR_RE
 from odcompile.utils.regex import COMPILER_WARNING_RE
@@ -107,3 +110,25 @@ def parseRunOutput(logs: str, parsed_output: bool) -> str:
         logs = SERVER_STARTING_OUTPUT_RE.sub("", logs)
         logs = SERVER_ENDING_OUTPUT_RE.sub("", logs)
     return logs
+
+
+async def versionCheck(self) -> None:
+    """
+    Checks the current config version and triggers actions or sends the owner a notice if needed
+    """
+    config_version = await self.config.config_version() or "0"
+
+    if config_version == __version__:
+        return
+
+    await self.config.config_version.set(__version__)
+    log.info(f"Config version updated from {config_version} to {__version__} ")
+
+    if parse_version(config_version) < parse_version("0.2.0"):
+        """
+        In version 0.2.0 we added version checking which requires the base URL to be stored instead of the strict /compile URL.
+        """
+        listener_url = await self.config.listener_url()
+        corrected_url = listener_url.rstrip("/compile")
+        await self.config.listener_url.set(corrected_url)
+        log.warning(f"Listener url config entry updated to '{corrected_url}' from '{listener_url}'")
