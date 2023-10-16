@@ -10,18 +10,18 @@ from httpx import ReadTimeout
 from odcompile.utils.misc import getEmbed
 
 
-async def sendCode(listenerurl: str, code: str, args: list, timeout: int = 900) -> json:
+async def sendCode(listenerurl: str, code: str, args: list, build_config: str, timeout: int = 900) -> json:
     """
     Communicate with the sandbox server and return the json output
     """
     async with AsyncClient() as client:
-        r = await client.post(listenerurl, json={"code_to_compile": code, "extra_arguments": args}, timeout=timeout)
+        r = await client.post(listenerurl, json={"code_to_compile": code, "extra_arguments": args, "build_config": build_config}, timeout=timeout)
         return r.json()
 
 
-async def processCode(self, code: str, args: list, parsed_output: bool = True) -> Embed:
+async def processCode(self, code: str, args: list, build_config: str, parsed_output: bool = True) -> Embed:
     try:
-        r = await sendCode(listenerurl=await self.config.listener_url(), code=code, args=args)
+        r = await sendCode(listenerurl=await self.config.listener_url(), code=code, args=args, build_config=build_config)
 
     except (JSONDecodeError, ReadTimeout, AttributeError):
         embed = Embed(

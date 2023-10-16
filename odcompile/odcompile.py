@@ -52,7 +52,7 @@ class ODCompile(commands.Cog):
         This command will attempt to compile and execute given DM code. It will respond with the full compile log along with any outputs given during runtime. If there are any errors during compilation, the bot will respond with a list provided by OpenDream.
 
         Short one-liners can be provided in basic code-markdown, for example:
-        `world.log < "Hello, World!"`
+        `world.log << "Hello, World!"`
 
         Multi-line or explicit code must be contained within a codeblock, for example:
         ```c
@@ -72,6 +72,8 @@ class ODCompile(commands.Cog):
 
         Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
 
+        If you'd like to compile using the Debug build of OpenDream use `[p]odcompiledebug`
+
         __Code will always be compiled with the latest version of OpenDream__
         """
         cleaned_input = splitArgs(args=input)
@@ -86,7 +88,29 @@ class ODCompile(commands.Cog):
 
         async with ctx.typing():
             embed = await processCode(
-                self=self, code=code, args=cleaned_input["args"], parsed_output=cleaned_input["parsed"]
+                self=self, code=code, args=cleaned_input["args"], build_config="Release", parsed_output=cleaned_input["parsed"]
+            )
+            await ctx.send(embed=embed)
+            return await message.delete()
+
+    @commands.command()
+    async def odcompiledebug(self, ctx, *, input: str):
+        """
+        Compile and run DM code with OpenDream's Debug build configuration
+        """
+        cleaned_input = splitArgs(args=input)
+
+        code = cleanupCode(cleaned_input["code"])
+        if code is None:
+            return await ctx.send("Your code has to be in a code block!")
+        if INCLUDE_PATTERN.search(code) is not None:
+            return await ctx.send("You can't have any `#include` statements in your code.")
+
+        message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
+
+        async with ctx.typing():
+            embed = await processCode(
+                self=self, code=code, args=cleaned_input["args"], build_config="Debug", parsed_output=cleaned_input["parsed"]
             )
             await ctx.send(embed=embed)
             return await message.delete()
