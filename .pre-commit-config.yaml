@@ -1,11 +1,11 @@
 repos:
     - repo: https://github.com/psf/black
-      rev: bf7a162
+      rev: e87737140f32d3cd7c44ede75f02dcd58e55820e  # frozen: 23.9.1
       hooks:
           - id: black
 
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: f71fa2c
+      rev: c4a0b883114b00d8d76b479c820ce7950211c99b  # frozen: v4.5.0
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
@@ -15,7 +15,7 @@ repos:
             language_version: python3
 
     - repo: https://github.com/PyCQA/flake8
-      rev: b9a7794
+      rev: 10f4af6dbcf93456ba7df762278ae61ba3120dc6  # frozen: 6.1.0
       hooks:
           - id: flake8
             args:
@@ -23,12 +23,12 @@ repos:
             language_version: python3
 
     - repo: https://github.com/asottile/reorder-python-imports
-      rev: b5d69d1
+      rev: ae11ccbd838e90f7e2a16abbed9276e6a41cafbb  # frozen: v3.12.0
       hooks:
           - id: reorder-python-imports
 
     - repo: https://github.com/codespell-project/codespell
-      rev: ec0f41b
+      rev: 6e41aba91fb32e9feb741a6258eefeb9c6e4a482  # frozen: v2.2.6
       hooks:
       - id: codespell
         additional_dependencies:
