@@ -126,7 +126,8 @@ async def versionCheck(self) -> None:
 
     if parse_version(config_version) < parse_version("0.2.0"):
         """
-        In version 0.2.0 we added version checking which requires the base URL to be stored instead of the strict /compile URL.
+        In version 0.2.0 we added version checking which requires
+        the base URL to be stored instead of the strict /compile URL.
         """
         listener_url = await self.config.listener_url()
         corrected_url = listener_url.rstrip("/compile")
