@@ -5,14 +5,14 @@ from packaging.version import parse as parse_version
 from redbot.core.utils.chat_formatting import box
 from redbot.core.utils.chat_formatting import escape
 
-from odcompile._version import __version__
-from odcompile.utils.logger import log
-from odcompile.utils.regex import CODE_BLOCK_RE
-from odcompile.utils.regex import COMPILER_ERROR_RE
-from odcompile.utils.regex import COMPILER_WARNING_RE
-from odcompile.utils.regex import SERVER_ENDING_OUTPUT_RE
-from odcompile.utils.regex import SERVER_ERROR_RE
-from odcompile.utils.regex import SERVER_STARTING_OUTPUT_RE
+from gooncompile._version import __version__
+from gooncompile.utils.logger import log
+from gooncompile.utils.regex import CODE_BLOCK_RE
+from gooncompile.utils.regex import COMPILER_ERROR_RE
+from gooncompile.utils.regex import COMPILER_WARNING_RE
+from gooncompile.utils.regex import SERVER_ENDING_OUTPUT_RE
+from gooncompile.utils.regex import SERVER_ERROR_RE
+from gooncompile.utils.regex import SERVER_STARTING_OUTPUT_RE
 
 
 def cleanupCode(content: str) -> str | None:

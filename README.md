@@ -1,11 +1,13 @@
-<h1 align="center">OpenDream Cogs</h1>
+<h1 align="center">OpenDream/Goonstation Cogs</h1>
 
 ## Overview
-A collection of RedBot cogs for the OpenDream project
+A collection of RedBot cogs for running code against the Goonstation codebase with the OpenDream project
+
+Forked from https://github.com/OpenDreamProject/od-cogs and *lightly* modified.
 
 | Cog        | Description                                                                                                                                                                                                                                                               |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OD Compile | **Compiles and runs DM code using OpenDream**.<br><br>`odcompileset` - OD Compiler Settings<br>`odcompile` - Sends code to a compilation environment and returns the results*<br>`odcompiledebug` - Sends code to be compiled using a debug build of OpenDream*<br><br>Requires: httpx<br><br>* Requires additional setup, check below for more information |
+| OD Compile | **Compiles and runs DM code using OpenDream**.<br><br>`odcompileset` - OD Compiler Settings<br>`odcompile` - Sends code to a compilation environment and returns the results*<br><br>Requires: httpx<br><br>* Requires additional setup, check below for more information |
 
 ## Setup
 
@@ -13,24 +15,24 @@ A collection of RedBot cogs for the OpenDream project
 
 Setup for your RedBot V3 instance is a straightforward process. Ensure that your bot runs on python 3.11 and follow the below steps to add the repo and install the cog(s).
 
-1. Add this repo with `[p]repo add od-cogs https://github.com/OpenDreamProject/od-cogs`
-2. Install the cog(s) you want to use, `[p]cog install od-cogs odcompile`
-3. Load the newly installed cog(s) with `[p]load odcompile`
+1. Add this repo with `[p]repo add od-cogs https://github.com/amylizzle/odgoon-cogs`
+2. Install the cog(s) you want to use, `[p]cog install odgoon-cogs odcompile`
+3. Load the newly installed cog(s) with `[p]load gooncompile`
 
 To use odcompile's context commands, you'll also need to register the interactions with discord. To do so,
 
-1. Enable the commands with `[p]slash enablecog odcompile`
+1. Enable the commands with `[p]slash enablecog gooncompile`
 2. Sync the interactions with `[p]slash sync` (Note: This can take up to 1-hour for Discord to fully sync the commands)
 
 _Replace [p] with your bot's prefix_
 
 ---
 
-### ODCompile
+### GoonCompile
 
-The ODCompile cog parses provided DM code and sends it to an external environment which will compile, run, and generate an output to be returned in Discord.
+The GoonCompile cog parses provided DM code and sends it to an external environment which will compile, run, and generate an output to be returned in Discord.
 
-In order to use this cog, you will need to either use a preestablished environment or host your own using this listener: https://github.com/OpenDreamProject/od-compiler-bot
+In order to use this cog, you will need to either use a preestablished environment or host your own using this listener: https://github.com/amylizzle/od-compiler-bot/tree/goon_compile
 
 Short one-liners can be provided in basic code-markdown, for example:
 `world.log << "Hello, World!"`

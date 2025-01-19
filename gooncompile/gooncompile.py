@@ -4,22 +4,22 @@ from redbot.core import checks
 from redbot.core import commands
 from redbot.core.config import Config
 
-from odcompile.utils.logger import log
-from odcompile.utils.misc import cleanupCode
-from odcompile.utils.misc import splitArgs
-from odcompile.utils.misc import versionCheck
-from odcompile.utils.regex import INCLUDE_PATTERN
-from odcompile.utils.relay import processCode
+from gooncompile.utils.logger import log
+from gooncompile.utils.misc import cleanupCode
+from gooncompile.utils.misc import splitArgs
+from gooncompile.utils.misc import versionCheck
+from gooncompile.utils.regex import INCLUDE_PATTERN
+from gooncompile.utils.relay import processCode
 
 
-class ODCompile(commands.Cog):
-    """A discord compiler for OpenDream"""
+class GoonCompile(commands.Cog):
+    """A discord compiler for Goonstation/OpenDream"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, 32175847454, force_registration=True)
+        self.config = Config.get_conf(self, 558715110019879, force_registration=True)
 
-        default_config = {"listener_url": "http://localhost:5000", "config_version": None}
+        default_config = {"listener_url": "http://localhost:5001", "config_version": None}
 
         self.config.register_global(**default_config)
         self.loop = get_event_loop()
@@ -27,18 +27,18 @@ class ODCompile(commands.Cog):
 
     @commands.group()
     @checks.is_owner()
-    async def odcompileset(self, ctx):
+    async def gooncompileset(self, ctx):
         """
         DM Compiler settings
         """
         pass
 
-    @odcompileset.command()
+    @gooncompileset.command()
     async def listener(self, ctx, url: str = None):
         """
         Set the base URL for the listener, DO NOT include `/compile`
 
-        Should be similar to: http://localhost:5000
+        Should be similar to: http://localhost:5001
         """
 
         try:
@@ -49,9 +49,9 @@ class ODCompile(commands.Cog):
             await ctx.send("There was an error setting the listener's URL. Please check your entry and try again.")
 
     @commands.command()
-    async def odcompile(self, ctx, *, input: str):
+    async def gooncompile(self, ctx, *, input: str):
         """
-        Compile and run DM code
+        Compile and run DM code against the Goonstation codebase
 
         This command will attempt to compile and execute given DM code. It will respond with the full compile log along with any outputs given during runtime. If there are any errors during compilation, the bot will respond with a list provided by OpenDream.
 
@@ -76,9 +76,7 @@ class ODCompile(commands.Cog):
 
         Adding `--no-parsing` before the codeblock will provide the full execution output instead of a parsed version.
 
-        If you'd like to compile using the Debug build of OpenDream use `[p]odcompiledebug`
-
-        __Code will always be compiled with the latest version of OpenDream__
+        __Code will always be compiled with the latest version of OpenDream and Goonstation__
         """  # noqa: E501
         cleaned_input = splitArgs(args=input)
 
@@ -97,33 +95,6 @@ class ODCompile(commands.Cog):
                 code=code,
                 args=cleaned_input["args"],
                 build_config="Release",
-                parsed_output=cleaned_input["parsed"],
-            )
-            await ctx.send(embed=embed)
-            return await message.delete()
-
-    @commands.command()
-    async def odcompiledebug(self, ctx, *, input: str):
-        """
-        Compile and run DM code with OpenDream's Debug build configuration
-        """
-        cleaned_input = splitArgs(args=input)
-
-        code = cleanupCode(cleaned_input["code"])
-        if code is None:
-            return await ctx.send("Your code has to be in a code block!")
-        if INCLUDE_PATTERN.search(code) is not None:
-            return await ctx.send("You can't have any `#include` statements in your code.")
-
-        message = await ctx.send("Compiling. If there have been any updates, this could take a moment....")
-        log.debug(f"Sending code to the listener to be compiled:\n{code}")
-
-        async with ctx.typing():
-            embed = await processCode(
-                self=self,
-                code=code,
-                args=cleaned_input["args"],
-                build_config="Debug",
                 parsed_output=cleaned_input["parsed"],
             )
             await ctx.send(embed=embed)

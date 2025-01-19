@@ -1,6 +1,6 @@
 from discord import AppCommandType
 
-from .odcompile import ODCompile
+from .gooncompile import ODCompile
 from .utils.appCommands import compileMessage
 
 

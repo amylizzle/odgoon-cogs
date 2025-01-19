@@ -9,9 +9,9 @@ from httpx import NetworkError
 from httpx import ReadTimeout
 from packaging.version import parse as parse_version
 
-from odcompile._exceptions import BadVersion
-from odcompile.utils.logger import log
-from odcompile.utils.misc import getEmbed
+from gooncompile._exceptions import BadVersion
+from gooncompile.utils.logger import log
+from gooncompile.utils.misc import getEmbed
 
 
 async def sendCode(listenerurl: str, code: str, args: list, build_config: str, timeout: int = 900) -> json:

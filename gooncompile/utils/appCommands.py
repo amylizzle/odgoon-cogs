@@ -1,11 +1,11 @@
 import discord
 from redbot.core import app_commands
 
-from odcompile.utils.logger import log
-from odcompile.utils.misc import cleanupCode
-from odcompile.utils.misc import splitArgs
-from odcompile.utils.regex import INCLUDE_PATTERN
-from odcompile.utils.relay import processCode
+from gooncompile.utils.logger import log
+from gooncompile.utils.misc import cleanupCode
+from gooncompile.utils.misc import splitArgs
+from gooncompile.utils.regex import INCLUDE_PATTERN
+from gooncompile.utils.relay import processCode
 
 
 @app_commands.guild_only()
