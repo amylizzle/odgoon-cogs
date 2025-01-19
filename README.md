@@ -62,19 +62,17 @@ _Code will always be compiled with the latest version of OpenDream_
 	<summary>Example screenshots</summary>
 
 - **Quick compile**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/5b558831-4e12-42dd-89da-fa014a0dfa1a)
-- **Compiling with multiple procs**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/4e6bbda6-db84-4978-b0b0-2fc983a1af31)
-- **Compiler warnings**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/28a7ea06-4740-4813-a125-8bb422b8a594)
-- **Compiler errors**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/00179f34-4a08-42d1-93dc-8c6c592b30d1)
-- **Passing arguments to the compiler**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/378dd849-afa7-4024-8983-b9f44e8c6881)
-- **Passing multiple arguments at once and disabling the parsed output**
-	- ![image](https://github.com/OpenDreamProject/od-cogs/assets/26130695/d13c003c-86e6-4bac-951d-00d42a4ac746)
-- **Using the context menu to compile**
-	- ![context_compile](https://github.com/OpenDreamProject/od-cogs/assets/26130695/f33fbabb-cec6-4c8b-9e24-8ff71b2553bd)
+	- ![image](https://github.com/user-attachments/assets/18dfaa83-d6d3-4d08-8a92-16ed20d28085)
+- **Using Goonstation code**
+  	- ![image](https://github.com/user-attachments/assets/831f8003-b32f-44f8-a84f-01a67d82dc24)
+- **Using the Unit Test framework**
+	- ![image](https://github.com/user-attachments/assets/a06ec131-b267-4bcf-95af-d2857dcb4dfc)
+- **Standard compilerbot stuff**
+	- ![image](https://github.com/user-attachments/assets/7b262866-7e0f-4c57-bf71-937230397504)
+ 	
+ 
+ 
+
 
 </details>
 
