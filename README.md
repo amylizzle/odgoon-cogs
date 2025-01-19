@@ -15,8 +15,8 @@ Forked from https://github.com/OpenDreamProject/od-cogs and *lightly* modified.
 
 Setup for your RedBot V3 instance is a straightforward process. Ensure that your bot runs on python 3.11 and follow the below steps to add the repo and install the cog(s).
 
-1. Add this repo with `[p]repo add od-cogs https://github.com/amylizzle/odgoon-cogs`
-2. Install the cog(s) you want to use, `[p]cog install odgoon-cogs odcompile`
+1. Add this repo with `[p]repo add odgoon-cogs https://github.com/amylizzle/odgoon-cogs`
+2. Install the cog(s) you want to use, `[p]cog install odgoon-cogs gooncompile`
 3. Load the newly installed cog(s) with `[p]load gooncompile`
 
 To use odcompile's context commands, you'll also need to register the interactions with discord. To do so,
