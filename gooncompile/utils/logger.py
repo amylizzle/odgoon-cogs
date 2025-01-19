@@ -1,3 +1,3 @@
 import logging
 
-log = logging.getLogger("red.cog.ODCompile")
+log = logging.getLogger("red.cog.GoonCompile")

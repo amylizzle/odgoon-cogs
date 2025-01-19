@@ -21,7 +21,7 @@ line-length = 120
 
 [tool.codespell]
 count = ""
-skip = ".git,.venv,*.lock,odcompile/utils/regex.py"
+skip = ".git,.venv,*.lock,gooncompile/utils/regex.py"
 builtin = "clear,rare,code,en-GB_to_en-US"
 ignore-words-list = "od"
 quiet = 3

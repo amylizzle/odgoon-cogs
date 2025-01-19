@@ -1,11 +1,11 @@
 from discord import AppCommandType
 
-from .gooncompile import ODCompile
+from .gooncompile import GoonCompile
 from .utils.appCommands import compileMessage
 
 
 async def setup(bot):
-    await bot.add_cog(ODCompile(bot))
+    await bot.add_cog(GoonCompile(bot))
     bot.tree.add_command(compileMessage)
 
 

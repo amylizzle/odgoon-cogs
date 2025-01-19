@@ -7,7 +7,7 @@ Forked from https://github.com/OpenDreamProject/od-cogs and *lightly* modified.
 
 | Cog        | Description                                                                                                                                                                                                                                                               |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OD Compile | **Compiles and runs DM code using OpenDream**.<br><br>`odcompileset` - OD Compiler Settings<br>`odcompile` - Sends code to a compilation environment and returns the results*<br><br>Requires: httpx<br><br>* Requires additional setup, check below for more information |
+| OD Compile | **Compiles and runs DM code using OpenDream**.<br><br>`gooncompileset` - OD Compiler Settings<br>`gooncompile` - Sends code to a compilation environment and returns the results*<br><br>Requires: httpx<br><br>* Requires additional setup, check below for more information |
 
 ## Setup
 
@@ -19,7 +19,7 @@ Setup for your RedBot V3 instance is a straightforward process. Ensure that your
 2. Install the cog(s) you want to use, `[p]cog install odgoon-cogs gooncompile`
 3. Load the newly installed cog(s) with `[p]load gooncompile`
 
-To use odcompile's context commands, you'll also need to register the interactions with discord. To do so,
+To use gooncompile's context commands, you'll also need to register the interactions with discord. To do so,
 
 1. Enable the commands with `[p]slash enablecog gooncompile`
 2. Sync the interactions with `[p]slash sync` (Note: This can take up to 1-hour for Discord to fully sync the commands)

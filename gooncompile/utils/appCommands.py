@@ -9,9 +9,9 @@ from gooncompile.utils.relay import processCode
 
 
 @app_commands.guild_only()
-@app_commands.context_menu(name="Compile with OD")
+@app_commands.context_menu(name="Compile with OD&Goon")
 async def compileMessage(interaction: discord.Interaction, compile_message: discord.Message):
-    cog = interaction.client.get_cog("ODCompile")
+    cog = interaction.client.get_cog("GoonCompile")
 
     cleaned_input = splitArgs(args=compile_message.content, strict_args=True)
 
